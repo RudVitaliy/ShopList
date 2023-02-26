@@ -1,8 +1,13 @@
 package com.example.shoplist.domain
 
-class GetShopListUseCase(private val shopItemRepository: ShopItemRepository) {
+import androidx.lifecycle.LiveData
+import javax.inject.Inject
 
-    fun getShopList(): List<ShopItem> {
-        return shopItemRepository.getShopList()
+class GetShopListUseCase @Inject constructor(
+    private val shopListRepository: ShopListRepository
+) {
+
+    fun getShopList(): LiveData<List<ShopItem>> {
+        return shopListRepository.getShopList()
     }
 }
